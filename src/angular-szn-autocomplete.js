@@ -199,7 +199,21 @@
 		this._deferredResults.promise.then(
 			(function (query, data) {
 				if (!this._cancelSearch) {
-					// there are no results. Hide popup.
+
+					this._popupScope.error = data.error;
+					this._popupScope.isInit = data.isInit;
+
+					// There is an error
+					if (data.error) {
+						// Set the error array to true
+						this._popupScope.error_msg = data.error_msg;
+
+						this._show();
+						this._popupScope.loading = false;
+						return;
+					}
+
+					// there are no results.
 					if (!data.results || !data.results.length) {
 						if (!this._options.noResult) {
 							this._hide();
