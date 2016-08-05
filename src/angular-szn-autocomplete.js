@@ -204,7 +204,7 @@
 					this._popupScope.isInit = data.isInit;
 
 					// There is an error
-					if(data.error) {
+					if (data.error) {
 						// Set the error array to true
 						this._popupScope.error_msg = data.error_msg;
 
